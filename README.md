@@ -1,18 +1,18 @@
-# SafeCloudFS
+# RockFS
 
-SafeCloudFS -- is a File System supported by a single cloud or cloud-of-clouds resilient to client side attacks.
+RockFS -- is a File System supported by a single cloud or cloud-of-clouds resilient to client side attacks.
 
-SafeCloudFS provides two sets of security mechanisms to be integrated with the client-side of a file system:
+RockFS provides two sets of security mechanisms to be integrated with the client-side of a file system:
  * a *recovery service* capable of undoing unintended file operations without losing valid file operations that occurred after the attack; and
  * *device data security mechanisms* to safely store encryption keys reducing the probability of having the credentials compromised by attackers and to protect cached data.
 
-SafeCloudFS works with a single storage cloud or with several storage clouds (cloud-of-clouds). It is compatible with AWS-S3, BackBlaze B2, Google Cloud Storage, Microsoft AzureBlob and RackSpace Cloud Files. SafeCloudFS requires a coordination service an it is compatible with DepSpace and Zookeeper (to de implemented soon). For testing purposes it is also possible to test SafeCloudFS without a coordination service, in that case the metadata of the File System is kept in memory during execution and discarded afterwards. The figure below shows the system architecture of SafeCloudFS.
+RockFS works with a single storage cloud or with several storage clouds (cloud-of-clouds). It is compatible with AWS-S3, BackBlaze B2, Google Cloud Storage, Microsoft AzureBlob and RackSpace Cloud Files. RockFS requires a coordination service an it is compatible with DepSpace and Zookeeper (to de implemented soon). For testing purposes it is also possible to test RockFS without a coordination service, in that case the metadata of the File System is kept in memory during execution and discarded afterwards. The figure below shows the system architecture of RockFS.
 
-![System architecture of SafeCloudFS](doc/img/safecloudfs-architecture.png)
+![System architecture of RockFS](doc/img/safecloudfs-architecture.png)
 
-To perform recovery SafeCloudFS saves logs of file operations. Each log entry is composed by two parts, the data part, that goes to the storage clouds, and the metadata part, which goes to the coordination service. The figure below shows how loggin is done.
+To perform recovery RockFS saves logs of file operations. Each log entry is composed by two parts, the data part, that goes to the storage clouds, and the metadata part, which goes to the coordination service. The figure below shows how loggin is done.
 
-![Logging file system operations in SafeCloudFS](doc/img/safecloudfs-logging.png)
+![Logging file system operations in RockFS](doc/img/safecloudfs-logging.png)
 
 A video with an example of a file being recovered can be found [here](https://youtu.be/YisuzJhi28M).
 
@@ -22,7 +22,7 @@ A video with an example of a file being recovered can be found [here](https://yo
 
 ### Prerequisites
 
-SafeCloudFS uses FUSE library. You need  to install the following tools before using SafeCloudFS.
+RockFS uses FUSE library. You need  to install the following tools before using RockFS.
 
 
 | Supported platforms                                           |     |      |
@@ -35,25 +35,25 @@ Please make sure you have at least Java 7 installed and Maven.
 
 ### Installing
 
-Before running SafeCloudFS execute the following command to install the required libs to you local Maven repository.
+Before running RockFS execute the following command to install the required libs to you local Maven repository.
 
 ```
 sh install.sh
 ```
 
 
-## Running SafeCloudFS
+## Running RockFS
 
-Before executing SafeCloudFS edit the `safecloudfs.properties` file in `config` folder.
+Before executing RockFS edit the `safecloudfs.properties` file in `config` folder.
 
-If you're planning to setup SafeCloudFS using DepSpace as the coordination service we recommend the following implementation of [DepSpace](https://github.com/inesc-id/depspacito).
+If you're planning to setup RockFS using DepSpace as the coordination service we recommend the following implementation of [DepSpace](https://github.com/inesc-id/depspacito).
 
 Default execution arguments are set in the pom.xml file.
 
 ### Arguments
 
 * --mount [path] - Directory to be mount
-* --config [path] - Path for the SafeCloudFS configuration file (For example: config/safecloudfs.properties). More about the configuration file [here](doc/CONFIG_FILE.md).
+* --config [path] - Path for the RockFS configuration file (For example: config/safecloudfs.properties). More about the configuration file [here](doc/CONFIG_FILE.md).
 * -- debug <ALL, SIMPLE, WARNING, SEVERE, INFO, FINE, FINER, FINEST> - Execute with debug log messages
 
 ### Running localy
@@ -64,11 +64,11 @@ mvn exec:java
 
 ### Running via Docker
 
-If you intend to user DepSpace a the coordination service for SafeCloudFS, you need to start it first. Instructions on how to start DepSpace can be found [here](https://github.com/inesc-id/depspacito).
+If you intend to user DepSpace a the coordination service for RockFS, you need to start it first. Instructions on how to start DepSpace can be found [here](https://github.com/inesc-id/depspacito).
 
-Before running SafeCloudFS first edit `config/accounts.json` with the access credentials to the cloud providers and `config/safecloudfs.properties` with the configuration of SafeCloudFS (for example, to indicate the path to the config folder of DepSpace or the address of the Zookeeper servers).
+Before running RockFS first edit `config/accounts.json` with the access credentials to the cloud providers and `config/safecloudfs.properties` with the configuration of RockFS (for example, to indicate the path to the config folder of DepSpace or the address of the Zookeeper servers).
 
-The Dockerfile in the root of the project allows to execute SafeCloudFS through a Debian VM. To build and run the VM execute the following commands:
+The Dockerfile in the root of the project allows to execute RockFS through a Debian VM. To build and run the VM execute the following commands:
 
 ```
 docker build -t safecloudfs .
