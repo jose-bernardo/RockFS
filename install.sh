@@ -10,6 +10,14 @@ echo "###############################################"
 echo "Installing JReedSolEC..."
 mvn install:install-file -Dfile=lib/JavaReedSolomon.jar -DgroupId=backblaze.backblaze -DartifactId=JavaReedSolomon -Dversion=1.0-SNAPSHOT -Dpackaging=jar
 
+echo "Downloading Depspacito"
+git clone https://github.com/inesc-id/DepSpacito.git
+cd DepSpacito
+echo "Installing Depspacito"
+sh build_args.sh 127.0.0.1 8000
+mvn install
+cd..
+
 echo "Installing SafeCloudFS..."
 mvn compile
 
