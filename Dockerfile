@@ -4,6 +4,8 @@ COPY . /usr/src/safecloudfs
 
 WORKDIR /usr/src/safecloudfs
 
+RUN echo "deb http://archive.debian.org/debian stretch main" > /etc/apt/sources.list
+
 RUN mkdir -p /usr/share/man/man1/ && \
  apt-get update && \
  apt-get -y install openjdk-8-jdk-headless && \
