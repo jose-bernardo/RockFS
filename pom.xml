@@ -50,11 +50,11 @@
 		</dependency>
 
 		<!-- JNR-FUSE - https://github.com/SerCeMan/jnr-fuse -->
-		<dependency>
-			<groupId>com.github.serceman</groupId>
-			<artifactId>jnr-fuse</artifactId>
-			<version>0.5.1</version>
-		</dependency>
+		<repository>
+		    <id>central</id>
+		    <name>bintray</name>
+		    <url>https://repo1.maven.org/maven2/</url>
+		</repository>
 
 		<dependency>
 			<groupId>org.depspace</groupId>
