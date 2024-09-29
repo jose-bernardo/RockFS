@@ -10,7 +10,7 @@ import java.nio.file.Paths;
 import java.io.*;
 
 public class DownloadHandler implements HttpHandler {
-    private String mountDir;
+    private final String mountDir;
 
     public DownloadHandler(String mountDir) {
         this.mountDir = mountDir;

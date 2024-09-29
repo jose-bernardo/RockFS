@@ -121,6 +121,7 @@ public class MultipleCloudBroker implements CloudBroker {
 				// System.out.println(Base64.getEncoder().encodeToString(dataBlocks[i]));
 
 				workers[i] = new UploadWorker(i, path, dataBlocks[i]);
+				
 
 				new Thread(workers[i]).start();
 			}

@@ -10,7 +10,7 @@ import java.nio.file.Paths;
 import java.io.*;
 
 public class UploadHandler implements HttpHandler {
-    private String mountDir;
+    private final String mountDir;
 
     public UploadHandler(String mountDir) {
         this.mountDir = mountDir;
@@ -23,7 +23,7 @@ public class UploadHandler implements HttpHandler {
             String key = exchange.getRequestURI().getQuery().split("=")[1].replace("/", ".");
             Path dest = Paths.get(this.mountDir, key);
 
-            try (OutputStream os = new FileOutputStream(dest.toFile())) {
+            try (OutputStream os = Files.newOutputStream(dest.toFile().toPath())) {
                 byte[] buffer = new byte[1024];
                 int bytesRead;
                 while ((bytesRead = is.read(buffer)) != -1) {
