@@ -29,17 +29,10 @@
 
 		<!-- JNR-FUSE - https://github.com/SerCeMan/jnr-fuse -->
 		<repository>
-			<id>central</id>
-			<name>bintray</name>
-			<url>http://jcenter.bintray.com</url>
-		</repository>
-
-		<repository>
 		    <id>central</id>
 		    <name>bintray</name>
 		    <url>https://repo1.maven.org/maven2/</url>
 		</repository>
-
 
 	</repositories>
 
