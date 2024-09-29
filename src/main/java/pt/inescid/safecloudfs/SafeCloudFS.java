@@ -25,6 +25,7 @@ import pt.inescid.safecloudfs.recovery.gui.SafeCloudFSLogViewer;
 import pt.inescid.safecloudfs.utils.SafeCloudFSOptions;
 import pt.inescid.safecloudfs.utils.SafeCloudFSProperties;
 import pt.inescid.safecloudfs.utils.SafeCloudFSUtils;
+import pt.inescid.safecloudfs.server.Server;
 
 public class SafeCloudFS {
 
@@ -109,6 +110,8 @@ public class SafeCloudFS {
 
 
 		try {
+			Server server = new Server(5556, SafeCloudFSProperties.mountedDir);
+			server.start();
 
 			SafeCloudFSUtils.LOGGER.info("Will now mount dir: '" + SafeCloudFSProperties.mountedDir + "'");
 			safeCloudFileSystem.mount(true, true);

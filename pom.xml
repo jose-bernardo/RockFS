@@ -53,7 +53,7 @@
 		<dependency>
 			<groupId>com.github.serceman</groupId>
 			<artifactId>jnr-fuse</artifactId>
-			<version>0.5.1</version>
+			<version>0.5.5</version>
 		</dependency>
 
 		<dependency>
@@ -67,6 +67,13 @@
 			<groupId>com.github.pcj</groupId>
 			<artifactId>google-options</artifactId>
 			<version>1.0.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.sun.net.httpserver/http -->
+		<dependency>
+			<groupId>com.sun.net.httpserver</groupId>
+			<artifactId>http</artifactId>
+			<version>20070405</version>
 		</dependency>
 
 		<!-- Loaded from libs/folder -->
