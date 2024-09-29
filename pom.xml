@@ -25,7 +25,6 @@
 		<gid>20</gid>
 	</properties>
 
-
 	<repositories>
 
 		<!-- JNR-FUSE - https://github.com/SerCeMan/jnr-fuse -->
@@ -35,9 +34,14 @@
 			<url>http://jcenter.bintray.com</url>
 		</repository>
 
+		<repository>
+		    <id>central</id>
+		    <name>bintray</name>
+		    <url>https://repo1.maven.org/maven2/</url>
+		</repository>
+
+
 	</repositories>
-
-
 
 
 	<dependencies>
@@ -156,4 +160,3 @@
 
 
 </project>
-
